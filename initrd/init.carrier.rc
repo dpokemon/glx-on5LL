@@ -16,13 +16,4 @@ on fs
 service dmb /system/bin/dmbserver
     class main
     user media
-    group system radio inet misc audio camera graphics net_bt net_bt_admin sdcard_rw sdcard_r shell media_rw
-
-#IPSec for VoLTE
-    service ipsec-daemon /system/bin/IPSecService
-    class main
-    socket ipsec_socket stream 660 system system
-    user system
-    group system net_raw inet net_admin
-
-
+    group system radio inet
