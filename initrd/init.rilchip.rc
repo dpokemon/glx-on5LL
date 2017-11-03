@@ -36,5 +36,4 @@ on fs
 service DIAG-daemon /system/bin/diagexe
     class main
     user root
-    group system radio inet net_raw
-
+    group system radio inet net_r

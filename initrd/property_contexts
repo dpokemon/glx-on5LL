@@ -222,5 +222,4 @@ marlin.hardware.                                      u:object_r:bluetooth_prop:
 # avc:  denied  { set } for property=min_freq_0 scontext=u:r:init_shell:s0 tcontext=u:object_r:default_prop:s0 tclass=property_service
 #line 1 "vendor/samsung/common/sepolicy/carrier/carrier_spr/property_contexts"
 cdma.home.	u:object_r:radio_prop:s0
-#line 1 "vendor/samsung/common/sepolicy/carrier/carrier_tfntmo/property_contexts"
-#cdma.home.	u:object_r:radio_prop:s0
+#line 1 "vendor/samsung/common/sepolicy/carrier/carrier_tfntmo/property_conte

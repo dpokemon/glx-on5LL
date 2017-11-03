@@ -439,11 +439,4 @@ SMPlayer                                    u:object_r:oneseg_mw_service:s0
 sd.service                                  u:object_r:dtvserver_service:s0
 dtvbml.server                               u:object_r:dtvserver_service:s0
 dtv.server                                  u:object_r:dtvserver_service:s0
-stctl.service                               u:object_r:mmb_mw_service:s0
-stbml.service                               u:object_r:mmb_mw_service:s0
-strec.service                               u:object_r:mmb_mw_service:s0
-mmbfcmp4mw.player                           u:object_r:mmb_mw_service:s0
-fclicemwserver                              u:object_r:mmb_mw_service:s0
-streccm.service                             u:object_r:mmb_mw_service:s0
-# FeliCa
-felica                                      u:object_r:nfc_service:s0
+stctl.service                               u:ob

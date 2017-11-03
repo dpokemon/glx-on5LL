@@ -15,5 +15,4 @@
 /devices/13510000.usb/usb1*sdb,/devices/13520000.usb/usb2*sda            auto    vfat    default    voldmanaged=UsbDriveB:auto
 /devices/13510000.usb/usb1*sdc,/devices/13520000.usb/usb2*sda              auto    vfat    default    voldmanaged=UsbDriveC:auto
 /devices/13510000.usb/usb1*sdd,/devices/13520000.usb/usb2*sda              auto    vfat    default    voldmanaged=UsbDriveD:auto
-/devices/13510000.usb/usb1*sde,/devices/13520000.usb/usb2*sda             auto    vfat    default    voldmanaged=UsbDriveE:auto
-/devices/13510000.usb/usb1*sdf,/devices/13520000.usb/usb2*sda             auto    vfat    default    voldmanaged=UsbDriveF:auto
+/devices/13510000.usb/usb1*sde,/devices/13520000.usb/

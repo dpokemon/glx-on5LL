@@ -17,19 +17,4 @@ ro.zygote=zygote32
 dalvik.vm.dex2oat-Xms=64m
 dalvik.vm.dex2oat-Xmx=512m
 dalvik.vm.image-dex2oat-Xms=64m
-dalvik.vm.image-dex2oat-Xmx=64m
-ro.dalvik.vm.native.bridge=0
-# Security fixes
-ro.config.tima=0
-ro.config.knox=0
-
-ro.securestorage.support=false
-
-boot.fps=30
-shutdown.fps=30
-
-# Disable Android Logging
-debugtool.anrhistory=0
-profiler.debugmonitor=false
-profiler.launch=false
-profiler.hung.dumpdobugreport=false
+dalvik.vm.image-dex2oat-Xmx=
