@@ -1,5 +1,0 @@
-on early-init
-	
-on init
-
-    # create Container (KNOX 1.0) moun
