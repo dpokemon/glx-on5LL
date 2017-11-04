@@ -1369,38 +1369,4 @@ on property:sys.boot_completed=1
 	chown system system /sys/class/net/wlan0/queues/rx-0/rps_cpus
 
 # icd
-on property:init.svc.media=restarting
-    check_icd
-    start icd
-
-# Sensorhub service
-service sensorhubservice /system/bin/sensorhubservice
-    class main
-    user system
-    group input
-
-# for Bluetooth Tethering
-service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-# end of BT
-
-service vpnclientd /system/bin/vpnclientd
-	socket vpnclientd seqpacket 0600 system system
-	user system
-	group system net_admin inet net_raw
-	disabled
-on property:service.vpnclientd.enable=1
-	start vpnclientd
-on property:service.vpnclientd.enable=0
-	stop vpnclientd
-
-# Reactivation lock
-	service reactived /system/bin/reactived
-	class late_start
+on p

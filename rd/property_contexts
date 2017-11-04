@@ -223,3 +223,4 @@ marlin.hardware.                                      u:object_r:bluetooth_prop:
 cdma.home.	u:object_r:radio_prop:s0
 #line 1 "vendor/samsung/common/sepolicy/carrier/carrier_tfntmo/property_contexts"
 #cdma.home.	u:object_r:radio_prop:s0
+                                          
