@@ -945,7 +945,7 @@
 
 		#define DVFS_INT_L0 334000
 		#define DVFS_INT_L1 333000
-		#define DVFS_INT_L2 276000
+		#define DVFS_INT_L2 275000
 		#define DVFS_INT_L3 207000
 		#define DVFS_INT_L4 138000
 		#define DVFS_INT_L5 104000
