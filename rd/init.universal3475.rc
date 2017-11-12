@@ -417,6 +417,13 @@ service umount_service /system/bin/umount /preload
     disabled
     oneshot
 
+ #VoLTE
+ service ipsec-daemon /system/bin/IPSecService
+    class main
+    socket ipsec_socket stream 660 system system
+    user system
+    group system net_raw inet net_admin
+
 on property:persist.sys.storage_preload=1
     mount ext4 /dev/block/platform/13540000.dwmmc0/by-name/HIDDEN /preload nosuid nodev noatime wait ro
     setprop storage.preload.complete 1
@@ -567,18 +574,6 @@ on property:ro.securestorage.knox=true
     chown system system /dev/.secure_storage
     restorecon -R /dev/.secure_storage
     start secure_storage
-
-# IPSec for VOLTE
-		chown root system /dev/socket
-		chmod 0775 /dev/socket
-
-# IPSec for VOLTE
-	service ipsec-daemon /system/bin/IPSecService
-		class main
-		socket ipsec_socket stream 660 system system
-		user system
-		group system net_raw inet net_admin
-
 service prepare_param /system/bin/prepare_param.sh /dev/block/platform/13540000.dwmmc0/by-name/PARAM
     class core
     user root
