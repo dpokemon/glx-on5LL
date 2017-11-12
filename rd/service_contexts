@@ -158,7 +158,6 @@ sprdsimphonebook                          u:object_r:radio_service:s0
 sprd_phone                                u:object_r:radio_service:s0
 security                                  u:object_r:system_server_service:s0
 board_score                               u:object_r:system_server_service:s0
-media.VideoCallEngineService              u:object_r:mediaserver_service:s0
 phasechecknative                          u:object_r:system_server_service:s0
 #line 1 "vendor/samsung/common/sepolicy/service_contexts"
 ############ aosp and sec_common #############
@@ -201,7 +200,6 @@ vendor.enea.Buffer_GL                       u:object_r:surfaceflinger_service:s0
 batterymanager                              u:object_r:system_app_service:s0
 clipboarduiservice                          u:object_r:system_app_service:s0
 com.sc.scservice.ISCServiceFactory          u:object_r:system_app_service:s0
-com.sc.scservicedownloadable.ISCServiceFactory u:object_r:system_app_service:s0
 emergency_service                           u:object_r:system_app_service:s0
 fingerprint_service                         u:object_r:system_app_service:s0
 ImsBase                                     u:object_r:system_app_service:s0
@@ -262,8 +260,6 @@ LSManager                                   u:object_r:system_server_service:s0
 magazinecardservice                         u:object_r:system_server_service:s0
 mDNIe                                       u:object_r:system_server_service:s0
 MSCS                                        u:object_r:system_server_service:s0
-## Service name "MSCS" change to "DisplaySolution"
-DisplaySolution                             u:object_r:system_server_service:s0
 mini_mode_app_manager                       u:object_r:system_server_service:s0
 motion_recognition                          u:object_r:system_server_service:s0
 msapwifi                                    u:object_r:system_server_service:s0
@@ -396,7 +392,6 @@ SamsungAudioFXService                       u:object_r:system_server_service:s0
 SEAMService                                 u:object_r:system_server_service:s0
 vpn_policy                                  u:object_r:system_server_service:s0
 wifi_policy                                 u:object_r:system_server_service:s0
-biometric_service                           u:object_r:system_server_service:s0
 
 ############ qcom_common #############
 listen.service                              u:object_r:adsprpcd_service:s0
@@ -419,8 +414,6 @@ wifioffload                                 u:object_r:system_server_service:s0
 com.skt.tbase.INativeService                u:object_r:tbased_service:s0
 ############ carrier_att
 com.smartcom.root.APNWidgetRootService      u:object_r:system_app_service:s0
-############ carrier_vzw
-vzwimsapiservice                            u:object_r:system_app_service:s0
 ############ carrier_jpn
 # OSV models
 DeviceManager3LM                            u:object_r:system_server_service:s0
