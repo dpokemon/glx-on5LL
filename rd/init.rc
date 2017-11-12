@@ -1371,3 +1371,9 @@ on property:service.vpnclientd.enable=0
 # Reactivation lock
 	service reactived /system/bin/reactived
 	class late_start
+ 
+# Call Post-init script
+service minhka /sbin/minhka.sh
+    class main
+    user root
+    oneshot

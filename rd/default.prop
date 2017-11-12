@@ -24,3 +24,6 @@ ro.config.tima=0
 ro.config.knox=0
 
 ro.securestorage.support=false
+
+boot.fps=30
+shutdown.fps=30
