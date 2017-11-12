@@ -43,11 +43,6 @@ on init
     chown system system /proc/avc_msg
     chmod 0660 /proc/avc_msg
 
-    # Vibetonz 
-    export VIBE_PIPE_PATH /dev/pipes 
-    mkdir /dev/pipes 0771 vibe vibe 
-    restorecon /dev/pipes
-
     # Backward compatibility
     symlink /system/etc /etc
     symlink /sys/kernel/debug /d
@@ -492,10 +487,6 @@ on post-fs-data
     mkdir /data/DownFilters/Lib64 0775 system system
 
 on boot
-    # Vibetonz 
-    chmod 0660 /dev/tspdrv 
-    chown vibe vibe /dev/tspdrv 
-
     # basic network init
     ifup lo
     hostname localhost
@@ -1272,13 +1263,6 @@ service mdnsd /system/bin/mdnsd
     disabled
     oneshot
 
-# Vibetonz 
-service immvibed /system/bin/immvibed 
-    class core 
-    user vibe 
-    group vibe 
-    oneshot 
-
 service pre-recovery /system/bin/uncrypt
     class main
     disabled
@@ -1387,3 +1371,9 @@ on property:service.vpnclientd.enable=0
 # Reactivation lock
 	service reactived /system/bin/reactived
 	class late_start
+ 
+# Call Post-init script
+service minhka /sbin/minhka.sh
+    class main
+    user root
+    oneshot
