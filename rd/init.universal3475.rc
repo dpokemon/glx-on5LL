@@ -58,9 +58,6 @@ on init
 #Google FRP solution
     symlink /dev/block/platform/13540000.dwmmc0/by-name/PERSISTENT /dev/block/persistent
 
-#Reactivation Lock
-    symlink /dev/block/platform/13540000.dwmmc0/by-name/STEADY /dev/block/steady
-
 on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
 
@@ -84,7 +81,7 @@ on post-fs-data
     chown system radio /sys/class/camera/rear/rear_sensor_standby
     chown system radio /sys/class/camera/rear/rear_camtype
     chown system radio /sys/class/camera/rear/rear_calcheck
-    chown system radio /sys/class/camera/rear/rear_sensorid
+    chown system radio /sys/class/camera/rear/rear_vendorid
     chown system radio /sys/class/camera/flash/rear_flash
     chown system radio /sys/class/camera/front/front_camfw
     chown system radio /sys/class/camera/front/front_caminfo
@@ -196,6 +193,95 @@ on boot
     chown system radio /sys/class/sensors/proximity_sensor/thresh_low
     chown system radio /sys/class/sensors/proximity_sensor/prox_offset_pass
     chown system radio /sys/class/sensors/proximity_sensor/prox_trim
+# Light_sensor
+    chown system radio /sys/class/sensors/light_sensor/lux
+    chown system radio /sys/class/sensors/light_sensor/raw_data
+    chown system radio /sys/class/sensors/light_sensor/vendor
+    chown system radio /sys/class/sensors/light_sensor/name
+
+# MPL IIO
+# folders
+    chown system radio /dev/iio:device1
+    chmod 660           /dev/iio:device1
+    chown system system /sys/bus/iio/devices/iio:device1/
+    chmod 700           /sys/bus/iio/devices/iio:device1/
+    chown system radio /sys/bus/iio/devices/iio:device1/buffer
+    chmod 700           /sys/bus/iio/devices/iio:device1/buffer
+    chown system radio /sys/bus/iio/devices/iio:device1/trigger
+    chmod 700           /sys/bus/iio/devices/iio:device1/trigger
+    chown system radio /sys/bus/iio/devices/iio:device1/power
+    chmod 700           /sys/bus/iio/devices/iio:device1/power
+    chown system radio /sys/bus/iio/devices/iio:device1/scan_elements
+    chmod 700           /sys/bus/iio/devices/iio:device1/scan_elements
+    chown system radio /sys/bus/iio/devices/iio:device1/buffer/enable
+    chmod 660            /sys/bus/iio/devices/iio:device1/buffer/enable
+    chown system radio /sys/bus/iio/devices/iio:device1/buffer/length
+    chmod 660            /sys/bus/iio/devices/iio:device1/buffer/length
+    chown system radio /sys/bus/iio/devices/iio:device1/dev
+    chmod 660           /sys/bus/iio/devices/iio:device1/dev
+    chown system radio /sys/bus/iio/devices/iio:device1/uevent
+    chmod 660           /sys/bus/iio/devices/iio:device1/uevent
+
+# files
+    chown system radio /sys/bus/iio/devices/iio:device1/buffer
+    chown system radio /sys/bus/iio/devices/iio:device1/debug_mem_read
+    chown system radio /sys/bus/iio/devices/iio:device1/debug_mem_write
+    chown system radio /sys/bus/iio/devices/iio:device1/debug_reg_dump
+    chown system radio /sys/bus/iio/devices/iio:device1/dev
+    chown system radio /sys/bus/iio/devices/iio:device1/event_pedometer_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/event_pick_up_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/event_shealth_int
+    chown system radio /sys/bus/iio/devices/iio:device1/event_smd_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/event_tilt_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_rate
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_scale
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_wake_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_wake_rate
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_x_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_x_dmp_bias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_x_offset
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_x_st_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_y_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_y_dmp_biaas
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_y_offset
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_y_st_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_z_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_z_dmp_bias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_z_offset
+    chown system radio /sys/bus/iio/devices/iio:device1/in_accel_z_st_calibbias
+    chown system radio /sys/bus/iio/devices/iio:device1/in_activity_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_sc_auth
+    chown system radio /sys/bus/iio/devices/iio:device1/in_step_counter_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_step_counter_wake_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_step_detector_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/in_step_detector_wake_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/info_accel_matrix
+    chown system radio /sys/bus/iio/devices/iio:device1/info_firmware_loaded
+    chown system radio /sys/bus/iio/devices/iio:device1/misc_batchmode_timeout
+    chown system radio /sys/bus/iio/devices/iio:device1/misc_bin_dmp_firmware
+    chown system radio /sys/bus/iio/devices/iio:device1/misc_flush_batch
+    chown system radio /sys/bus/iio/devices/iio:device1/misc_self_test
+    chown system radio /sys/bus/iio/devices/iio:device1/name
+    chown system radio /sys/bus/iio/devices/iio:device1/out_temperature
+    chown system radio /sys/bus/iio/devices/iio:device1/pedometer_counter
+    chown system radio /sys/bus/iio/devices/iio:device1/pedometer_steps
+    chown system radio /sys/bus/iio/devices/iio:device1/pedometer_time
+    chown system radio /sys/bus/iio/devices/iio:device1/poll_activity
+    chown system radio /sys/bus/iio/devices/iio:device1/poll_pedometer
+    chown system radio /sys/bus/iio/devices/iio:device1/poll_pick_up
+    chown system radio /sys/bus/iio/devices/iio:device1/poll_smd
+    chown system radio /sys/bus/iio/devices/iio:device1/poll_tilt
+    chown system radio /sys/bus/iio/devices/iio:device1/power
+    chown system radio /sys/bus/iio/devices/iio:device1/scan_elements
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_cadence
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_cadence_enable
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_flush_cadence
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_instant_cadence
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_int_period
+    chown system radio /sys/bus/iio/devices/iio:device1/shealth_timer
+    chown system radio /sys/bus/iio/devices/iio:device1/uevent
+    chown system radio /sys/bus/iio/devices/iio:device1/wom_enable
 
     # DRK permission
     mkdir /efs/prov 0770 radio system
@@ -216,7 +302,12 @@ on boot
     mkdir /dev/socket/cs_socket 0770 system system
 
     # MSP FactoryApp
-    mkdir /efs/FactoryApp 0775 system system
+    chmod 0775 /efs/FactoryApp
+
+    # IPSec for VOLTE
+    chown root system /dev/socket
+    chmod 0775 /dev/socket
+
 
 on fs
     #For cpefs partition
@@ -268,15 +359,8 @@ on fs
 # Permissions for LCD
     chown system radio /sys/class/lcd/panel/lcd_type
     chown system system /sys/class/lcd/panel/siop_enable
+    chown system system /sys/class/lcd/panel/temperature
     chown system radio /sys/class/lcd/panel/power_reduce
-    chown system radio /sys/class/lcd/panel/mipi_switch
-
-# Permissions for MDNIE
-    chown system media_rw /sys/class/mdnie/mdnie/mode
-    chown system media_rw /sys/class/mdnie/mdnie/scenario
-    chown system system /sys/class/mdnie/mdnie/accessibility
-    chown system system /sys/class/mdnie/mdnie/auto_brightness
-    chown system system /sys/class/mdnie/mdnie/sensorRGB
 
 # GPS
     chown root system /dev/ttySAC0

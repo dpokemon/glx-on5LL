@@ -10,7 +10,6 @@ import /init.${ro.hardware}.rc
 import /init.${ro.zygote}.rc
 import /init.trace.rc
 import /init.sec_debug.rc
-import /init.container.rc
 import /init.rilcommon.rc
 
 on early-init
@@ -70,7 +69,6 @@ on init
     chown root system /sys/fs/cgroup/memory/tasks
     chmod 0660 /sys/fs/cgroup/memory/tasks
     mkdir /sys/fs/cgroup/memory/sw 0750 root system
-    write /sys/fs/cgroup/memory/sw/memory.swappiness 100
     write /sys/fs/cgroup/memory/sw/memory.move_charge_at_immigrate 1
     chown root system /sys/fs/cgroup/memory/sw/tasks
     chmod 0660 /sys/fs/cgroup/memory/sw/tasks
@@ -263,8 +261,6 @@ on post-fs
     restorecon /cache/lost+found
 
 on post-fs-data
-    # Reload SE Android Policy
-    setprop selinux.reload_policy 1
 
     # sec_efs_file
     mkdir /efs/sec_efs 0775 radio system
@@ -655,6 +651,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
     chown system system /sys/class/timed_output/vibrator/enable
+    chown system system /sys/class/timed_output/vibrator/intensity
     chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/button-backlight/brightness
@@ -665,7 +662,6 @@ on boot
     chown system system /sys/class/leds/red/device/grpfreq
     chown system system /sys/class/leds/red/device/grppwm
     chown system system /sys/class/leds/red/device/blink
-    chown system system /sys/class/timed_output/vibrator/enable
     chown system system /sys/module/sco/parameters/disable_esco
     chown system system /sys/kernel/ipv4/tcp_wmem_min
     chown system system /sys/kernel/ipv4/tcp_wmem_def
@@ -963,7 +959,6 @@ on property:init.svc.bootanim=stopped
 
 # Reload SE Android Policy for MDM
 on property:persist.security.mdm.policy=1
-    setprop selinux.reload_policy 1
 
 ## Daemon processes to be run by init.
 ##
@@ -1031,35 +1026,23 @@ service edmaudit /system/bin/edmaudit
     
 ## WTL_EDM_END
 
-service kap_enable /sbin/knox_changer -e
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-service kap_disable /sbin/knox_changer -d
-    class main
-    seclabel u:r:kapd:s0
-    disabled
-    oneshot
-
-on property:security.knox_kap_mode=true
-    start kap_enable
-on property:security.knox_kap_mode=false
-    start kap_disable
-
 on property:ro.debuggable=1
     start console
 
 # adbd is controlled via property triggers in init.<platform>.usb.rc
 service adbd /sbin/adbd --root_seclabel=u:r:su:s0
-    class core
-    socket adbd stream 660 system system
     disabled
+    socket adbd stream 660 system system
     seclabel u:r:adbd:s0
 
 # adbd on at boot in emulator
-on property:ro.kernel.qemu=1
+# allows adbd at boot with property trigger below
+on property:ro.debuggable=1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 04E8
+    write /sys/class/android_usb/android0/idProduct 6860
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
     start adbd
 
 service lmkd /system/bin/lmkd
@@ -1185,12 +1168,12 @@ service media /system/bin/mediaserver
 service apaservice /system/bin/apaservice
     class main
     user jack
-    group system inet sdcard_rw sdcard_r media_rw shell
+    group inet sdcard_rw sdcard_r media_rw shell
 
 service jackservice /system/bin/jackservice
     class main
     user jack
-    group system audio inet shell
+    group audio inet shell
     
 # One shot invocation to deal with encrypted volume.
 service defaultcrypto /system/bin/vdc --wait cryptfs mountdefaultencrypted

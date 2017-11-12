@@ -11,9 +11,9 @@
 
 # VOLD
 /devices/13560000.dwmmc2/mmc_host/mmc*     auto    vfat    default    voldmanaged=extSdCard:auto,noemulatedsd
-/devices/13510000.usb/usb1*sda             auto    vfat    default    voldmanaged=UsbDriveA:auto
-/devices/13510000.usb/usb1*sdb             auto    vfat    default    voldmanaged=UsbDriveB:auto
-/devices/13510000.usb/usb1*sdc             auto    vfat    default    voldmanaged=UsbDriveC:auto
-/devices/13510000.usb/usb1*sdd             auto    vfat    default    voldmanaged=UsbDriveD:auto
-/devices/13510000.usb/usb1*sde             auto    vfat    default    voldmanaged=UsbDriveE:auto
-/devices/13510000.usb/usb1*sdf             auto    vfat    default    voldmanaged=UsbDriveF:auto
+/devices/13510000.usb/usb1*sda,/devices/13520000.usb/usb2*sda              auto    vfat    default    voldmanaged=UsbDriveA:auto
+/devices/13510000.usb/usb1*sdb,/devices/13520000.usb/usb2*sda            auto    vfat    default    voldmanaged=UsbDriveB:auto
+/devices/13510000.usb/usb1*sdc,/devices/13520000.usb/usb2*sda              auto    vfat    default    voldmanaged=UsbDriveC:auto
+/devices/13510000.usb/usb1*sdd,/devices/13520000.usb/usb2*sda              auto    vfat    default    voldmanaged=UsbDriveD:auto
+/devices/13510000.usb/usb1*sde,/devices/13520000.usb/usb2*sda             auto    vfat    default    voldmanaged=UsbDriveE:auto
+/devices/13510000.usb/usb1*sdf,/devices/13520000.usb/usb2*sda             auto    vfat    default    voldmanaged=UsbDriveF:auto
